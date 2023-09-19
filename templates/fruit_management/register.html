@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>果物登録</h2>
+
+<form method="post">
+    {% csrf_token %}
+    <div class="form-group mb-3">
+        {{ form.as_p}}
+    </div>
+    <input class="btn btn-primary mt-3" type="submit" name="create_fruit" value="登録">
+</form>
+
+{% endblock %}

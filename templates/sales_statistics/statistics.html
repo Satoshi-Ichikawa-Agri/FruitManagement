@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>販売統計情報</h2>
+<p><a href="{% url 'home'%}">TOP</a> > 販売統計情報</p>
+
+<h3>累計</h3>
+<p><strong>{{ cumulative_sales }}円</strong></p>
+
+<br><br>
+<h3>月別</h3>
+<table class="table table-striped table-borderd">
+    <thead>
+        <tr>
+            <th>月</th>
+            <th>売り上げ</th>
+            <th>内訳</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- 当月 -->
+        <tr>
+            <td>{{ first_day_of_current_month }}</td>
+            <td>{{ sales_current_month }}</td>
+            <td>
+                {% for item in current_month_fruits_list %}
+                {{ item.fruit_name }}:&nbsp;{{ item.sales }}円({{ item.quantity }})&nbsp;
+                {% endfor %}
+            </td>
+        </tr>
+        <!-- 前月 -->
+        <tr>
+            <td>{{ first_day_a_month_ago }}</td>
+            <td>{{ sales_a_month_ago }}</td>
+            <td>
+                {% for item in a_month_ago_fruits_list %}
+                {{ item.fruit_name }}:&nbsp;{{ item.sales }}円({{ item.quantity }})&nbsp;
+                {% endfor %}
+            </td>
+        </tr>
+        <!-- 前々月 -->
+        <tr>
+            <td>{{ first_day_two_months_ago }}</td>
+            <td>{{ sales_two_months_ago }}</td>
+            <td>
+                {% for item in two_months_ago_fruits_list %}
+                {{ item.fruit_name }}:&nbsp;{{ item.sales }}円({{ item.quantity }})&nbsp;
+                {% endfor %}
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<br><br>
+<h3>日別</h3>
+<table class="table table-striped table-borderd">
+    <thead>
+        <tr>
+            <th>日</th>
+            <th>売り上げ</th>
+            <th>内訳</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- 本日 -->
+        <tr>
+            <td>{{ start_of_today }}</td>
+            <td>{{ sales_today }}</td>
+            <td>
+                {% for item in today_fruits_list %}
+                {{ item.fruit_name }}:&nbsp;{{ item.sales }}円({{ item.quantity }})&nbsp;
+                {% endfor %}
+            </td>
+        </tr>
+        <!-- 前日 -->
+        <tr>
+            <td>{{ start_a_day_ago }}</td>
+            <td>{{ sales_a_day_ago }}</td>
+            <td>
+                {% for item in a_day_ago_fruits_list %}
+                {{ item.fruit_name }}:&nbsp;{{ item.sales }}円({{ item.quantity }})&nbsp;
+                {% endfor %}
+            </td>
+        </tr>
+        <!-- 前々日 -->
+        <tr>
+            <td>{{ start_two_days_ago }}</td>
+            <td>{{ sales_two_days_ago }}</td>
+            <td>
+                {% for item in two_days_ago_fruits_list %}
+                {{ item.fruit_name }}:&nbsp;{{ item.sales }}円({{ item.quantity }})&nbsp;
+                {% endfor %}
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+{% endblock %}

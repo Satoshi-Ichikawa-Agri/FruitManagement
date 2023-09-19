@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>管理TOP</h2>
+<p><a href="{% url 'index' %}">果物マスタ管理</a></p>
+<p><a href="{% url 'sales_index' %}">販売情報管理</a></p>
+<p><a href="{% url 'sales_statistics' %}">販売統計管理</a></p>
+
+{% endblock %}

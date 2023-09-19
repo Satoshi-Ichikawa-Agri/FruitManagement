@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>新規会員登録</h2>
+
+<div class="signup">
+    <form method="post" class="signup-container">
+        {% csrf_token %}
+        {% for field in form %}
+        <div class="mb-3">
+            <label class="form-label">
+                {{ field.label }}&nbsp;<span class="badge bg-danger">必須</span>
+            </label>
+            <p>{{ field }}</p>
+        </div>
+        {% endfor %}
+        <input class="btn btn-primary" type="submit" value="登録" />
+    </form>
+</div>
+
+<style>
+    .signup {
+        width: 500px;
+        margin: 16px auto;
+        font-size: 16px;
+    }
+
+    .signup-container {
+        background: #c7c5c5;
+        padding: 12px;
+    }
+
+    /* Every row inside .signup-container is defined with p tags */
+    .signup p {
+        padding: 12px;
+    }
+
+    .signup input {
+        box-sizing: border-box;
+        display: block;
+        width: 100%;
+        border-width: 1px;
+        border-style: solid;
+        padding: 16px;
+        outline: 0;
+        font-family: inherit;
+        font-size: 0.95em;
+    }
+
+    .signup input[type="email"],
+    .signup input[type="password"] {
+        background: #fff;
+        border-color: #bbb;
+        color: #555;
+    }
+
+    /* Text fields' focus effect */
+    .signup input[type="email"]:focus,
+    .signup input[type="password"]:focus {
+        border-color: #888;
+    }
+
+    .signup input[type="submit"] {
+        background: #28d;
+        border-color: transparent;
+        color: #fff;
+        cursor: pointer;
+    }
+
+    .signup input[type="submit"]:hover {
+        background: #17c;
+    }
+
+    /* Buttons' focus effect */
+    .signup input[type="submit"]:focus {
+        border-color: #05a;
+    }
+
+</style>
+
+{% endblock %}

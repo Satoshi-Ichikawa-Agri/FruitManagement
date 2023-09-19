@@ -1,0 +1,22 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-sm">
+        <a class="navbar-brand" href="{% url 'home' %}">果物販売管理</a>
+        <div class="navbar-collapse collapse show">
+            <ul class="navbar-nav me-auto">
+                {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="{% url 'logout' %}">ログアウト</a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<style>
+    .navbar {
+        height: auto;
+        max-width: 100%;
+        padding: 0;
+    }
+</style>
